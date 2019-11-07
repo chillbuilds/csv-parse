@@ -3,22 +3,24 @@ const fs = require('fs');
 
 const csvArr = [];
 
+
+//gather csv file names from 'error-logs' dir and push to csvArr
 fs.readdirSync(testFolder).forEach(file => {
   csvArr.push(file);
 
 });
 
-// console.log(csvArr);
 
-fs.readFile(`C:/Users/Deny/Documents/switch-folders/error-logs/${csvArr[0]}`, "utf8", function(error, data){
+//rename last file in folder to kick off fresh logging and gain access to latest 
+fs.rename(`${testFolder}${csvArr[csvArr.length - 1]}`, `${testFolder}final.csv`, function(err) {
+    if ( err ) console.log('ERROR: ' + err);
+});
 
-    // if (error) {
-    //     return console.log(error);
-    // }
-    // const parseArr = [];
-    // parseArr.push(data);
-    // const x = toString(parseArr);
-    // console.log(x);
+
+
+//for loop to look through all log files and log error messages
+fs.readFile(`C:/Users/Deny/Documents/switch-folders/error-logs/${csvArr[2]}`, "utf8", function(error, data){
+
 
     const x = data.toString();
     const y = x.split("\n");
@@ -27,10 +29,11 @@ fs.readFile(`C:/Users/Deny/Documents/switch-folders/error-logs/${csvArr[0]}`, "u
 
     for(var i = 0; i < arr.length; i++){
         if(arr[i] === "error"){
-            console.log(arr[i + 2]);
+            console.log(arr[i + 6] + "\n");
         }
     }
 })
+
 
 // fs.rename('/path/to/old.png', '/path/to/new.png', function(err) {
 //     if ( err ) console.log('ERROR: ' + err);
