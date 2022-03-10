@@ -1,4 +1,5 @@
 module.exports = function renameLoop(subDir, dir, tag) {
+    const start = require('./start.js')
     const homeDir = require('os').homedir()
     const fs = require('fs')
     let index = 1
@@ -19,4 +20,5 @@ module.exports = function renameLoop(subDir, dir, tag) {
             }
         })
     }
+    start()
 }

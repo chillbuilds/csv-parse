@@ -6,7 +6,7 @@ module.exports = function rename() {
         type: 'list',
         name: 'input',
         message: 'where are the files?',
-        choices: ['"input" folder', 'desktop', 'downloads']
+        choices: ['"input" folder', 'desktop', 'downloads', 'exit']
     }).then((data) => {
         switch(data.input) {
             case '"input" folder': 
@@ -17,6 +17,8 @@ module.exports = function rename() {
                 break;
             case 'downloads':
                 diff('/Downloads/')
+                break;
+            case 'exit': 
                 break;
         }
     })

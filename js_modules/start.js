@@ -6,7 +6,7 @@ module.exports = function start() {
       type: 'list',
       name: 'next',
       message: 'what do you want to do?',
-      choices: ['rename csvs', 'pull error skus']
+      choices: ['pull error skus', 'rename csvs', 'exit']
     }).then((data) => {
         switch(data.next) {
             case 'rename csvs': 
@@ -14,6 +14,8 @@ module.exports = function start() {
                 break;
             case 'pull error skus':
                 pull()
+                break;
+            case 'exit':
                 break;
         }
       })
